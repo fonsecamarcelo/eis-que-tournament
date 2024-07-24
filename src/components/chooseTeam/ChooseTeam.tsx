@@ -18,14 +18,42 @@ const ChooseTeam = () => {
   return(
     <>
       <Select
-      options={teams}
-      isMulti
-      getOptionLabel={(option: Team) => option.name}
-      getOptionValue={(option: Team) => option.name}
-      onChange={(item) => setSelectedItem(item as MultiValue<Team>)}
-      components={animatedComponents}
+        options={teams}
+        isMulti
+        getOptionLabel={(option: Team) => option.name}
+        getOptionValue={(option: Team) => option.name}
+        onChange={(item) => setSelectedItem(item as MultiValue<Team>)}
+        components={animatedComponents}
       />
       <button onClick={handleSelect}>Enviar</button>
+
+      {
+        selectedItem && (
+          <table>
+            <thead>
+            <tr>
+              <th>Time</th>
+              <th>País</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              {
+                selectedItem?.map((item: Team) => {
+                  const {name, flag} = item;
+                  return (
+                    <>
+                      <td>{name}</td>
+                      <td><img src={flag}/></td>
+                    </>
+                  )
+                })
+              }
+            </tr>
+            </tbody>
+          </table>
+        )
+      }
     </>
   )
 }
