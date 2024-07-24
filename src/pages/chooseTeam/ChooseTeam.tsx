@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import Select, {MultiValue} from "react-select";
-import teams from './../../teams.json';
+import teams from '../../teams.json';
 import makeAnimated from 'react-select/animated'
 
 interface Team {
